@@ -17,18 +17,21 @@ public abstract class Main
 	 ***********************************************************/
 	public static void main(String[] args) throws IOException
 	{
-		Price regularPrice = new RegularPrice();
-		Price childrensPrice = new ChildrensPrice();
-		Price newReleasePrice = new NewReleasePrice();
+		Price regularPrice = new RegularPrice(false);
+		Price childrensPrice = new ChildrensPrice(true);
+		Price newReleasePrice = new NewReleasePrice(true);
+		Price bestPrice = new BestPrice(true);
 		
 		Customer who = new Customer("Barack Obama");
 		Movie m1 = new Movie("Life of Amalia", regularPrice);
 		Movie m2 = new Movie("Peter Pan", childrensPrice);
 		Movie m3 = new Movie("Donna del Lago", newReleasePrice);
+		Movie m4 = new Movie("Batman", bestPrice);
 
 		who.addRental(new Rental(m1, 1));
 		who.addRental(new Rental(m2, 2));
 		who.addRental(new Rental(m3, 3));
+		who.addRental(new Rental(m4, 4));
 		System.out.println( who.statement());
 		
 		PrintWriter html = new PrintWriter(new FileWriter("webPages/statement.html")); 
